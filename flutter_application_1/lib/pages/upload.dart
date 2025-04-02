@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 
 class UploadPage extends StatefulWidget {
-  const UploadPage({Key? key}) : super(key: key);
+  const UploadPage({super.key});
 
   @override
   _UploadPageState createState() => _UploadPageState();
@@ -24,14 +24,18 @@ class _UploadPageState extends State<UploadPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Upload File")),
+      appBar: AppBar(title: const Text("")),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             ElevatedButton(
-              onPressed: _pickFile,
-              child: const Text("Select File"),
+  onPressed: _pickFile,
+  child: Image.asset(
+    "assets/uploadImage.png", // Remplace par le chemin de ton image
+    width: 50, // Ajuste la taille selon ton besoin
+    height: 50,
+  ),
             ),
             if (_fileName != null) ...[
               const SizedBox(height: 20),

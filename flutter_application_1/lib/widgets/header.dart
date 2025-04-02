@@ -5,10 +5,10 @@ class HeaderWidget extends StatelessWidget {
   final VoidCallback onMenuPressed;
 
   const HeaderWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.onMenuPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

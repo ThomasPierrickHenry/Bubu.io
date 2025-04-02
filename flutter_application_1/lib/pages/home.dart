@@ -1,11 +1,12 @@
+import 'package:Bubu.IO/pages/upload.dart';
+import 'package:Bubu.IO/widgets/header.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/pages/upload.dart';
-import 'package:flutter_application_1/widgets/header.dart';
+
 
 
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
