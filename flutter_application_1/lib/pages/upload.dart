@@ -3,7 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter_application_1/widgets/MyButton.dart';
 
 class UploadPage extends StatefulWidget {
-  const UploadPage({super.key});
+  const UploadPage({super.key, required Null Function() onUploadComplete});
 
   @override
   _UploadPageState createState() => _UploadPageState();

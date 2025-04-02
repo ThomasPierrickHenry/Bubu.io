@@ -1,10 +1,7 @@
+import 'package:flutter_application_1/pages/homeConnect.dart';
 
-import 'package:flutter_application_1/pages/upload.dart';
 import 'package:flutter_application_1/widgets/header.dart';
 import 'package:flutter/material.dart';
-
-
-
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -12,7 +9,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Home Page")),
       body: Column(
         children: [
           HeaderWidget(
@@ -23,18 +19,9 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          Expanded(
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const UploadPage()),
-                  );
-                },
-                child: const Text("Go to Upload Page"),
-              ),
-            ),
+          Align(
+            alignment: Alignment.topCenter,
+            child:  MainDashboard(), 
           ),
         ],
       ),
