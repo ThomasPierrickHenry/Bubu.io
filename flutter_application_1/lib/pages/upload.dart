@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter_application_1/widgets/MyButton.dart';
 
 class UploadPage extends StatefulWidget {
   const UploadPage({super.key});
@@ -33,13 +34,14 @@ class _UploadPageState extends State<UploadPage> {
   onPressed: _pickFile,
   child: Image.asset(
     "assets/uploadImage.png", // Remplace par le chemin de ton image
-    width: 50, // Ajuste la taille selon ton besoin
-    height: 50,
+    width: 200, // Ajuste la taille selon ton besoin
+    height: 200,
   ),
             ),
             if (_fileName != null) ...[
               const SizedBox(height: 20),
               Text("Selected File: $_fileName"),
+              MyButton(),
             ],
           ],
         ),

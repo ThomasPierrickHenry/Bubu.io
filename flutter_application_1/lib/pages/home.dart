@@ -1,5 +1,6 @@
-import 'package:Bubu.IO/pages/upload.dart';
-import 'package:Bubu.IO/widgets/header.dart';
+
+import 'package:flutter_application_1/pages/upload.dart';
+import 'package:flutter_application_1/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 
