@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/formulaire.dart';
+import 'package:flutter_application_1/components/loginFormulaire.dart';
 
 class MainDashboard extends StatefulWidget {
+  const MainDashboard({super.key});
+
   @override
   _MainDashboardState createState() => _MainDashboardState();
 }
@@ -11,9 +15,9 @@ class _MainDashboardState extends State<MainDashboard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 100),
+      padding: const EdgeInsets.only(top: 100),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -35,7 +39,7 @@ class _MainDashboardState extends State<MainDashboard> {
                       ),
                     ),
                     AnimatedContainer(
-                      duration: Duration(milliseconds: 300), // Animation fluide
+                      duration: Duration(milliseconds: 300),
                       margin: EdgeInsets.only(top: 5),
                       height: 2,
                       width: 100,
@@ -62,7 +66,7 @@ class _MainDashboardState extends State<MainDashboard> {
                       ),
                     ),
                     AnimatedContainer(
-                      duration: Duration(milliseconds: 300), // Animation fluide
+                      duration: Duration(milliseconds: 300),
                       margin: EdgeInsets.only(top: 5),
                       height: 2,
                       width: 100,
@@ -71,13 +75,11 @@ class _MainDashboardState extends State<MainDashboard> {
                   ],
                 ),
               ),
-              if (!isLoginSelected){
-                  Formulaire(),
-                 }
-                 
-              ),
             ],
           ),
+          SizedBox(height: 20,), // Espacement entre les boutons et le formulaire
+          isLoginSelected ? LoginFormulaireWidget() : FormulaireWidget(),
+           // Le formulaire s'affiche ici
         ],
       ),
     );
