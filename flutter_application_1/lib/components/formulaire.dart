@@ -1,4 +1,8 @@
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart' as _Crypt;
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/components/Bdd.dart';
 
 class FormulaireWidget extends StatefulWidget {
   @override
@@ -6,10 +10,33 @@ class FormulaireWidget extends StatefulWidget {
 }
 
 class _FormulaireWidgetState extends State<FormulaireWidget> {
-  final TextEditingController _nomController = TextEditingController();
-  final TextEditingController _prenomController = TextEditingController();
+  final TextEditingController _pseudoController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _paysController = TextEditingController();
+
+
+  Future<void> addUserWithBDD(String username, String password) async {
+  final db = _Database(); // Création d'une instance de ta classe _Database
+
+  try {
+    final conn = await db.connect(); // Connexion à la BDD
+
+    // Exemple de requête d'insertion
+    await conn.query(
+      'INSERT INTO users (username, password) VALUES (?, ?)',
+      [username, password],
+    );
+
+    print("Utilisateur ajouté avec succès !");
+    
+    await conn.close(); // Fermeture de la connexion
+  } catch (e) {
+    print("Erreur lors de l'ajout de l'utilisateur : $e");
+  }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,20 +48,20 @@ class _FormulaireWidgetState extends State<FormulaireWidget> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             TextField(
-              controller: _nomController,
+              controller: _pseudoController,
               decoration: InputDecoration(
-                labelText: 'Nom',
+                labelText: 'Peudo',
                 border: OutlineInputBorder(),
               ),
             ),
             SizedBox(height: 10),
-            TextField(
-              controller: _prenomController,
+            TextFormField(
+              controller: _passwordController,
+              obscureText: true,
               decoration: InputDecoration(
-                labelText: 'Prénom',
+                labelText: 'Mot de passe',
                 border: OutlineInputBorder(),
-              ),
-            ),
+            )),    
             SizedBox(height: 10),
             TextField(
               controller: _emailController,
@@ -55,12 +82,13 @@ class _FormulaireWidgetState extends State<FormulaireWidget> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  String nom = _nomController.text;
-                  String prenom = _prenomController.text;
+                  String pseudo = _pseudoController.text;
+                  String password = _passwordController.text;
+                  String hashedPassword = _Crypt.sha256.convert(utf8.encode(password)).toString();
                   String email = _emailController.text;
                   String pays = _paysController.text;
 
-                  print("Nom: $nom, Prénom: $prenom, Email: $email, Pays: $pays");
+                  print("Nom: $pseudo, Prénom: $hashedPassword, Email: $email, Pays: $pays");
                 },
                 child: Text("Envoyer"),
               ),
